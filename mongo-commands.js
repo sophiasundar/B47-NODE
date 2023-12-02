@@ -397,6 +397,9 @@ db.products.insertMany(
         //    descending = -1
         db.products.find({}).sort({product_price: -1}).pretty();
 
+        // in sorting not only number are sorted but also the name in alphabetical order
+        db.products.find({}).sort({product_name: 1}).pretty();
+
 
         // highly priced product 
         db.products.find({}).sort({product_price: -1}).limit(3).pretty();
@@ -410,4 +413,45 @@ db.products.insertMany(
         // rating > 8 and exclude _id, include name,summary
         // rating >= 8.8 and exclude _id, include name,rating, and sort rating in descing order
 
-    // rating < 
+    // rating < 8.8
+    db.movies.find({
+        rating: {$lt:8.8}
+    }).pretty();
+    
+    //  // rating >= 8
+    db.movies.find({
+        rating: {$gte:8}
+    }).pretty();
+
+    //rating > 8 and exclude _id, include name,summary
+    //  rating is greater than 8 and name and summary is asked to included, so
+    //    rating is also included rating is 1
+    db.movies.find({
+        rating: {$gt:8}
+    },{_id:0,name:1,rating:1,summary:1}).pretty();
+
+    // rating >= 8.8 and exclude _id, include name,rating, and sort rating in descing order
+    db.movies.find({
+        rating: {$gte:8.8}
+    },{_id:0,name:1,rating:1}).sort({rating: -1}).pretty();
+
+    // aggregate
+
+    db.orders.insertMany([
+        {_id: 0,productName: "Steel Beam", status: "new", quantity: 10},
+        {_id: 1,productName: "Steel Beam", status: "urgent", quantity: 20},
+        {_id: 2,productName: "Steel Beam", status: "urgent", quantity: 30},
+        {_id: 3,productName: "Iron Rod", status: "new", quantity: 15},
+        {_id: 4,productName: "Iron Rod", status: "urgent", quantity: 50},
+        {_id: 5,productName: "Iron Rod", status: "urgent", quantity: 10},
+    ])
+
+    db.orders.find({}).pretty();
+
+    // stage 1: select sum(quantity) from orders where status = "urgent"
+
+       db.orders.aggregate({$match:{status: "urgent"}})
+
+    //  stage 2 -group by productName 
+
+        
