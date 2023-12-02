@@ -362,14 +362,52 @@ db.products.insertMany(
     ]
 );
 
-db.products.find({}).pretty();
+       db.products.find({}).pretty();
 
 //count
-db.products.find({}).count();
+       db.products.find({}).count();
 
-//Types of projections:
+//Types of projections:  for particular rows and column of 100 rows and column
     
-   // inclusion
+   // inclusion = 1
+   // showing the product price and product color
+
+        db.products.find({},{product_price: 1,product_color:1}).pretty();
 
 
-   // exclusion
+   // exclusion = 0
+   // exclusion means leaving the product price and product color
+    
+       db.products.find({},{product_price: 0,product_color:0}).pretty();
+
+
+    // ************* ( cannot use both inclusion = 1 and exclusion = 0  ) ***********************
+
+   // if we want exclude only id use this command
+    
+        db.products.find({},{_id:0, product_price: 1,product_color:1}).pretty();
+      
+    // ************** (mongodb is reading or Find the document fast than inserting) *****************
+    
+    // sorting
+        //    ascending = 1
+         db.products.find({}).sort({product_price: 1}).pretty();
+
+
+        //    descending = -1
+        db.products.find({}).sort({product_price: -1}).pretty();
+
+
+        // highly priced product 
+        db.products.find({}).sort({product_price: -1}).limit(3).pretty();
+
+        // skip or ignore first 3
+        db.products.find({}).sort({product_price: 1}).skip(3).pretty();
+ 
+    // Question
+        // rating < 8.8
+        // rating >= 8
+        // rating > 8 and exclude _id, include name,summary
+        // rating >= 8.8 and exclude _id, include name,rating, and sort rating in descing order
+
+    // rating < 
