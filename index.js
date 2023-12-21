@@ -1,4 +1,5 @@
 const express = require('express')
+const { MongoClient } = require('mongodb');
 const app = express()
 const PORT = 8000;
 
@@ -179,6 +180,15 @@ const products = [
         "product_color": "indigo"
     }
 ]
+
+// Mongodb Connection 
+const MONGO_URL = "mongodb://localhost";
+
+async function createConnection(){
+    const client = new MongoClient(MONGO_URL);
+    await client.connect();
+    return client; 
+}
 
 // / is the endpoint
     app.get('/',(req, res)=> {  
