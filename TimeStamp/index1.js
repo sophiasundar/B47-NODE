@@ -5,8 +5,10 @@ const app = express();
 const PORT = 8000;
   
   const dirPath = path.join(__dirname, "currentTimeStamp")
-
-      app.get("/",(req, res) => {
+  
+  //  ---------- note use this endpoint http://localhost:8000/time&date  --------------
+     
+  app.get("/time&date",(req, res) => {
 
           const dataObj = new Date();
 
