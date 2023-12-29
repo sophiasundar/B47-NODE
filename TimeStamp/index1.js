@@ -39,11 +39,11 @@ const PORT = 8000;
 
             const time = `The Current timestamp is (${year}-${month}-${date}),Indian Standard Time is (${hours}:${minutes}:${seconds})`;
 
-        fs.writeFile(`${dirPath}/22-12-2023.txt`, time,(err)=>{
+        fs.writeFile(`${dirPath}/29-12-2023.txt`, time,(err)=>{
           if(err){
             console.log(err)
           }else{
-            console.log(`completed writing 22-12-2023.txt`);
+            console.log(`completed writing 29-12-2023.txt`);
           }
           });
           res.send(time)
