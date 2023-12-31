@@ -1,5 +1,7 @@
-const express = require('express')
-const { MongoClient } = require('mongodb');
+// const express = require('express')
+// const { MongoClient } = require('mongodb');
+import  express  from "express";
+import { MongoClient } from "mongodb";
 const app = express()
 const PORT = 8000;
 
