@@ -71,8 +71,8 @@ const allHall = [
     }
   ]
 
-const MONGO_URL = "mongodb://0.0.0.0:27017";
-
+// const MONGO_URL = "mongodb://0.0.0.0:27017";
+   const MONGO_URL = process.env.MONGO_URL;
 
 async function createConnection(){
     const client = new MongoClient(MONGO_URL);
@@ -85,38 +85,28 @@ const client = await createConnection()
 // express.json() act like an inteceptor / converting body to the json / inbuilt middleware
 app.use(express.json());
 
-app.get('/welcome',(req, res)=> {  
-    res.send('welcome to party hall👋🎉🎊🥳')
-    })
+    // for home page
+    app.get('/welcome',(req, res)=> {  
+        res.send('welcome to party hall👋🎉🎊🥳')
+        })
 
+        //    app.get('/allhall', async(req, res)=> {  
+        //         const hall = await  client.db("node").collection("hall-api").find(req.query).toArray();
+        //         res.send(hall)
+        //     })
 
-    app.get('/allhall', async(req, res)=> {  
-        // const { product_material, product_color, product_price } = req.query;
-        // console.log(req.query,product_material);
-        
-        // console.log(req.query,product_color);
-        // let filteredProducts = products;
-        //  if (product_material){
-        //     // call by reference  filtered products is reference
-        //     filteredProducts = products.filter((pd)=> pd.product_material == product_material)
-        //  }
-        //  if (product_color){
-        //     // call by reference
-        //     filteredProducts = products.filter((pd)=> pd.product_color == product_color)   
-        //  } 
-            // if (product_price){
-            //     // call by reference
-            //     filteredProducts = products.filter((pd)=> pd.product_price == product_price)   
-            //  } 
-
-            //  if (req.query.product_price){
-            //     req.query.product_price = +req.query.product_price
+            // add hall data
+            app.post('/allhall', async(req, res)=> {  
+                const addHall = req.body;
+                console.log(addHall)
+                const result = await client
+                .db("node")
+                .collection("hall-api")
+                .insertMany(addHall);
+                res.send(result);
                 
-            //  } 
+            });
 
-        const hall = await  client.db("node").collection("hall-api").find(req.query).toArray();
-        res.send(hall)
-    })
 
 app.listen(PORT, ()=> 
 console.log("Server started on the PORT", PORT)
