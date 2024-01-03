@@ -19,21 +19,27 @@ const allHall = [
                 "date": "29-11-2023",
                 "start-time": "12:00 PM",
                 "end-time": "2:00 PM",
-                "booked-status": "confirmed"
+                "booked-status": "confirmed",
+                "booking-Id": "08",
+                "booked-Date": "29-05-2023"
             },
             {
                 "customerName": "syvia",
                 "date": "1-11-2023",
                 "start-time": "2:00 PM",
                 "end-time": "5:00 PM",
-                "booked-status": "Waiting"
+                "booked-status": "Waiting",
+                "booking-Id": "15",
+                "booked-Date": "17-09-2023"
             },
             {
                 "customerName": "olivia",
                 "date": "31-12-2023",
                 "start-time": "11:00 PM",
                 "end-time": "1:00 AM",
-                "booked-status": "confirmed"
+                "booked-status": "confirmed",
+                "booking-Id": "28",
+                "booked-Date": "14-06-2023"
             }
 
         ]
@@ -50,21 +56,27 @@ const allHall = [
                 "date": "1-1-2024",
                 "start-time": "12:00 PM",
                 "end-time": "2:00 PM",
-                "booked-status": "confirmed"
+                "booked-status": "confirmed",
+                "booking-Id": "29",
+                "booked-Date": "12-10-2023"
             },
             {
                 "customerName": "salim ali",
                 "date": "17-2-2024",
                 "start-time": "2:00 PM",
                 "end-time": "5:00 PM",
-                "booked-status": "confirmed"
+                "booked-status": "confirmed",
+                "booking-Id": "100",
+                "booked-Date": "17-12-2023"
             },
             {
                 "customerName": "indira",
                 "date": "31-2-2024",
                 "start-time": "11:00 PM",
                 "end-time": "1:00 AM",
-                "booked-status": "confirmed"
+                "booked-status": "confirmed",
+                "booking-Id": "203",
+                "booked-Date": "26-10-2023"
             }
 
         ]
@@ -90,13 +102,12 @@ app.use(express.json());
         res.send('welcome to party hall👋🎉🎊🥳')
         })
 
-        //    app.get('/allhall', async(req, res)=> {  
-        //         const hall = await  client.db("node").collection("hall-api").find(req.query).toArray();
-        //         res.send(hall)
-        //     })
 
-            // add hall data
-            app.post('/allhall', async(req, res)=> {  
+        // 1. Creating a Room with: # Number of seats available, 
+            // # Amenities in Room # Price for 1 Hour
+            
+            // add room
+             app.post('/allhall', async(req, res)=> {  
                 const addHall = req.body;
                 console.log(addHall)
                 const result = await client
@@ -107,7 +118,29 @@ app.use(express.json());
                 
             });
 
+        // 2. Booking a Room with: # Customer Name, 
+            // # Date, # Start Time, # End Time, # Room Id
 
-app.listen(PORT, ()=> 
-console.log("Server started on the PORT", PORT)
-)
+
+
+        // 3. List all Rooms with Booked Data with: # Room Name
+            // # Booked status, # Customer Name, # Date,
+            //  # Start Time, # End Time, # Room Id
+
+
+
+        // 4. List all Customer with Booked Data with: # Customer Name
+            //# Room Name, # Date, # Start Time, # End Time
+
+
+
+        // 5. List how many times a Customer has Booked the room with below details: 
+            // # Customer Name # Room Name, # Date, # Start Time, # End Time
+            // # Booking id # Booking date
+
+
+            
+
+            app.listen(PORT, ()=> 
+             console.log("Server started on the PORT", PORT)
+            )
