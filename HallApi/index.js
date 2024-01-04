@@ -1,10 +1,14 @@
 import express from 'express' ;
 import * as dotenv from "dotenv";
+import cors from "cors";
 
 const app = express()
 dotenv.config();
 app.use(express.json());
+app.use(cors());
 const PORT = process.env.PORT;
+
+const hallstart = parseInt(100);
 
 const allHall = [
     {
@@ -89,6 +93,47 @@ const allHall = [
         res.send('welcome to party hall👋🎉🎊🥳')
         })
 
-app.listen(PORT, ()=> 
+        // for getting allhall data 
+        app.get("/allHall",(req,res)=>{
+            try{
+                res.send(allHall)
+            }catch (error) {
+                console.log(error);
+            }
+            
+        });
+
+        // filter hall by id
+        app.get("/room/:id",(req,res)=>{
+            try{
+                const { id } = req.params;
+                console.log(req.params, "ID=", id);
+                const hall = allHall.filter((ah)=> ah.roomId == id)[0];
+                res.status(200).send(hall)
+            }
+               catch(error)  {
+                console.log(error);
+                res.status(404).send( "Given roomId doesn't exist ");
+              }
+        })
+
+        // 1. Creating a Room with: # Number of seats available, 
+            // # Amenities in Room # Price for 1 Hour
+
+            app.post("/createroom",(req,res)=>{
+                try {
+                    const createRoom = { ...req.body, roomID: `${hallstart + allHall.length}` };
+                    rooms = [...allHall, createRoom];
+                    res.send({ createRoom, message: "Room created" });
+                  } catch (error) {
+                    console.log(error);
+                    res.status(404).send({ message: "Give the valid Room details" });
+                  }
+            })
+    
+      
+
+
+ app.listen(PORT, ()=> 
 console.log("Server started on the PORT", PORT)
 )
