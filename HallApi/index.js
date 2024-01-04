@@ -154,7 +154,7 @@ const allHall = [
                   for(let i = 0; i < allHall.length; i++){
                     if (allHall[i].roomId == req.body.roomId) {
                           allHall[i].bookingDetails.forEach((book)=>{
-                           if(res.body.date  <= book.date ){
+                           if(res.body.date  == book.date ){
                               return res.status(404).send( { error:"This hall already booked with respective date and time" } )     
                            }
                           });
