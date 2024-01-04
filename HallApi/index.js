@@ -148,38 +148,35 @@ const allHall = [
             // # Date, # Start Time, # End Time, # Room Id
             //  while booking app should not allow booking an already booked room on 
             // the same date and time.
-             app.post("/bookRoom", (req,res)=>{
-              try{     
-                for(let i = 0; i < allHall.length; i++){
-                    if(allHall[i].roomId == res.body.roomId){
-                        allHall[i].bookingDetails.forEach((bookroom)=>{
-                         if(res.body.date  === bookroom.date ){
-                            return res.status(404).send( { error:"This hall already booked with respective date and time" } )     
-                         }
-                        });
-                        let booking = {
-                            customerName: req.body.customerName,
-                            date: req.body.date,
-                            startTime:  req.body.startTime,
-                            endTime :  req.body.endTime,
-                            bookedStatus : req.body. bookedStatus,
-                            bookingId : req.body.bookingId,
-                            bookingDate : req.body.bookingDate
-                        }
-                         
-                       
-                        allHall[i].bookingDetails.push(booking);
+             
+            app.post("/bookRoom", (req,res)=>{
+                try{     
+                  for(let i = 0; i < allHall.length; i++){
+                    if (allHall[i].roomId == req.body.roomId) {
+                          allHall[i].bookingDetails.forEach((book)=>{
+                           if(res.body.date  <= book.date ){
+                              return res.status(404).send( { error:"This hall already booked with respective date and time" } )     
+                           }
+                          });
+                          let booking = {
+                              customerName: req.body.customerName,
+                              date: req.body.date,
+                              startTime:  req.body.startTime,
+                              endTime :  req.body.endTime,
+                              bookedStatus : req.body. bookedStatus,
+                              bookingId : req.body.bookingId,
+                              bookingDate : req.body.bookingDate
+                          }
+                          
+                          allHall.bookingDetails.push(booking);
+                          return res.status(404).send({ error: "Invaild RoomId" });
+                          }
+                      }
                         res.status(200).send({message:"Hall booked Successfully"});
-                    }
-                    }
-                    return res.status(404).send({ error: "Invaild RoomId" });
-                }catch(error){
-                    console.log(error); 
-                }
-            })
-
-
-
+                    }catch(error){
+                      console.log(error); 
+                  }
+              })
 
 
 
