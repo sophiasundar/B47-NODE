@@ -102,16 +102,16 @@ app.use(express.json());
         res.send('welcome to party hall👋🎉🎊🥳')
         })
 
-        // app.post('/allhall', async(req, res)=> {  
-        //     const addHall = req.body;
-        //     console.log(addHall)
-        //     const result = await client
-        //     .db("node")
-        //     .collection("hall-api")
-        //     .insertMany(addHall);
-        //     res.send(result);
+        app.post('/allhall', async(req, res)=> {  
+            const addHall = req.body;
+            console.log(addHall)
+            const result = await client
+            .db("node")
+            .collection("hall-api")
+            .insertMany(addHall);
+            res.send(result);
             
-        // });
+        });
 
 
 
