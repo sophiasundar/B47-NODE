@@ -20,6 +20,7 @@ const allHall = [
         "bookingDetails":[
             {
                 "customerName": "charlie puth",
+                "roomId": "101",
                 "date": "29-11-2023",
                 "startTime": "12:00 PM",
                 "endTime": "2:00 PM",
@@ -29,6 +30,7 @@ const allHall = [
             },
             {
                 "customerName": "syvia",
+                "roomId": "101",
                 "date": "1-11-2023",
                 "startTime": "2:00 PM",
                 "endTime": "5:00 PM",
@@ -38,6 +40,7 @@ const allHall = [
             },
             {
                 "customerName": "olivia",
+                "roomId": "101",
                 "date": "31-12-2023",
                 "startTime": "11:00 PM",
                 "endTime": "1:00 AM",
@@ -56,7 +59,8 @@ const allHall = [
         "priceFor1Hour":"5000",
         "bookingDetails":[
             {
-                "customerName": "john eliot",
+                "customerName": "indira",
+                "roomId": "108",
                 "date": "1-1-2024",
                 "startTime": "12:00 PM",
                 "endTime": "2:00 PM",
@@ -66,6 +70,7 @@ const allHall = [
             },
             {
                 "customerName": "salim ali",
+                "roomId": "108",
                 "date": "17-2-2024",
                 "startTime": "2:00 PM",
                 "endTime": "5:00 PM",
@@ -75,6 +80,7 @@ const allHall = [
             },
             {
                 "customerName": "indira",
+                "roomId": "108",
                 "date": "31-2-2024",
                 "startTime": "11:00 PM",
                 "endTime": "1:00 AM",
@@ -177,6 +183,77 @@ const allHall = [
                       console.log(error); 
                   }
               })
+
+              // 3. List all Rooms with Booked Data with: # Room Name
+            // # Booked status, # Customer Name, # Date,
+            //  # Start Time, # End Time, # Room Id
+                app.get("/listRooms",(req,res)=>{
+                    try{
+                        let listRooms = []
+                        for( let i = 0; i < allHall.length; i++){
+                            let roomName = ({"RoomName": allHall[i].roomName})
+                            listRooms.push(roomName)
+
+                            allHall[i].bookingDetails.forEach((bookingDetails)=>{
+                                let bookedDetails = (bookingDetails)
+                                listRooms.push(bookedDetails)
+                            })
+                        }
+                    
+                        res.send(listRooms);
+                    
+                    } catch(error){
+                        console.log(error)
+                    } 
+                })
+                      
+            
+                // 4. List all Customer with Booked Data with: # Customer Name
+                   //# Room Name, # Date, # Start Time, # End Time
+
+                   app.get("/listCustomers",(req,res)=>{
+                    try{
+                        let listCustomers = []
+                        for( let i = 0; i < allHall.length; i++){
+                            
+                            allHall[i].bookingDetails.forEach((bookingDetails)=>{
+                                let bookedDetails = (bookingDetails)
+                                listCustomers.push(bookedDetails)
+                            })
+                            let roomName = ({"RoomName": allHall[i].roomName})
+                            let roomId = ({"RoomName": allHall[i].roomId})
+                            listCustomers.push(roomName,roomId)
+                        }
+                    
+                        res.send(listCustomers);
+                    
+                    } catch(error){
+                        console.log(error)
+                    } 
+                })
+
+            // 5. List how many times a Customer has Booked the room with below details: 
+            // # Customer Name # Room Name, # Date, # Start Time, # End Time
+            // # Booking id # Booking date
+                 
+            app.get("/BookedTimes",(req,res)=>{
+                try{
+                    let BookedTimes = []
+                    for( let i = 0; i < allHall.length; i++){
+                        
+                        allHall[i].bookingDetails.forEach((bookingDetails)=>{
+                            let bookedDetails = (bookingDetails)
+                            BookedTimes.push(bookedDetails)
+                        })
+                    }
+                
+                    res.send(BookedTimes);
+                
+                } catch(error){
+                    console.log(error)
+                } 
+            })
+
 
 
 
