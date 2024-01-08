@@ -94,12 +94,12 @@ const allHall = [
   ]
 
 
-             // for home page
+             // for home page   https://hall-api-ubnd.onrender.com/welcome
     app.get('/welcome',(req, res)=> {  
         res.send('welcome to party hall👋🎉🎊🥳')
         })
 
-        // for getting allhall data 
+        // for getting allhall data https://hall-api-ubnd.onrender.com/allhall
         app.get("/allHall",(req,res)=>{
             try{
                 res.send(allHall)
@@ -109,7 +109,7 @@ const allHall = [
             
         });
 
-        // filter hall by id
+        // filter hall by id   https://hall-api-ubnd.onrender.com/room/101
         app.get("/room/:id",(req,res)=>{
             try{
                 const { id } = req.params;
@@ -125,6 +125,7 @@ const allHall = [
 
         // 1. Creating a Room with: # Number of seats available, 
             // # Amenities in Room # Price for 1 Hour
+            // 
 
             app.post("/createroom", (req,res)=>{
                 try{
@@ -240,11 +241,21 @@ const allHall = [
                 try{
                     let BookedTimes = []
                     for( let i = 0; i < allHall.length; i++){
-                        
                         allHall[i].bookingDetails.forEach((bookingDetails)=>{
+                            const { customerName } = req.params;
+                            const hall = allHall.filter((ah)=> ah.customerName == "indira")[0];
                             let bookedDetails = (bookingDetails)
-                            BookedTimes.push(bookedDetails)
+                            BookedTimes.push(bookedDetails.hall)
                         })
+                        let bookingDetails  = {
+                            customerName: req.body.customerName,
+                            date: req.body.date,
+                            startTime:  req.body.startTime,
+                            endTime :  req.body.endTime,
+                            bookedStatus : req.body. bookedStatus,
+                            bookingId : req.body.bookingId,
+                            bookingDate : req.body.bookingDate
+                        }
                     }
                 
                     res.send(BookedTimes);
