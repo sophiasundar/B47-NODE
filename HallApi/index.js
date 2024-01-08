@@ -125,7 +125,7 @@ const allHall = [
 
         // 1. Creating a Room with: # Number of seats available, 
             // # Amenities in Room # Price for 1 Hour
-            // 
+            // https://hall-api-ubnd.onrender.com/createroom check for postman docs
 
             app.post("/createroom", (req,res)=>{
                 try{
@@ -155,6 +155,7 @@ const allHall = [
             // # Date, # Start Time, # End Time, # Room Id
             //  while booking app should not allow booking an already booked room on 
             // the same date and time.
+            // 
              
             app.post("/bookRoom", (req,res)=>{
                 try{     
