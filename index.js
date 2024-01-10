@@ -14,9 +14,9 @@ const PORT = process.env.PORT;
         // mongodb://localhost
         // mongodb://localhost:27017
         // mongodb://0.0.0.0:27017   protocol
-// const MONGO_URL = process.env.MONGO_URL;   for mongo atlas
+const MONGO_URL = process.env.MONGO_URL;   
 
-const MONGO_URL = "mongodb://0.0.0.0:27017";
+// const MONGO_URL = "mongodb://0.0.0.0:27017"; mongodb compass
 
 async function createConnection(){
     const client = new MongoClient(MONGO_URL);
