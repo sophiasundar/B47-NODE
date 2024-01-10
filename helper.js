@@ -22,3 +22,9 @@ export async function addProducts(newProduct) {
         .collection("products")
         .insertMany(newProduct);
 }
+export async function updateProducts(id,updateProduct) {
+    return await client
+        .db("items")
+        .collection("products")
+        .updateOne({id: id}, {$set:updateProduct});
+}

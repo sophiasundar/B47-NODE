@@ -4,7 +4,7 @@ import  express  from "express";
 import { MongoClient } from "mongodb";
 import * as dotenv from "dotenv";
 import { productsRouter } from "./routes/products.js";
-// import { getAllProducts, getProductsById, deleteProductsById, addProducts } from "./helper.js";
+
 dotenv.config();
 const app = express()
 const PORT = process.env.PORT;
