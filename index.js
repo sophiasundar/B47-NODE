@@ -32,9 +32,7 @@ app.get('/',(req, res)=> {
     res.send('welcome to assigning the students to the mentor 🧑‍🏫 🏫 🧑‍🎓')
     })
 
-app.use("/students", studentsRouter);
-
-app.use("/teachers", teachersRouter);
+    app.use("/products", productsRouter);
 
 app.listen(PORT, ()=> 
 console.log("Server started on the PORT", PORT)

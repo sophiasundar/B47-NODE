@@ -1,7 +1,8 @@
 import  express  from "express";
 import { MongoClient } from "mongodb";
 import * as dotenv from "dotenv";
-
+import { studentsRouter } from "./routes/students.js";
+import { teachersRouter } from "./routes/teachers.js";
 
 dotenv.config();
 const app = express()
@@ -23,8 +24,11 @@ app.get('/',(req, res)=> {
     res.send('Hello World hi👋🌏')
     })
 
-app.use("/products", productsRouter);
-//   productsRouter is a name
+
+    app.use("/students", studentsRouter);
+
+    app.use("/teachers", teachersRouter);
+
 app.listen(PORT, ()=> 
 console.log("Server started on the PORT", PORT)
 )
