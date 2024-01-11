@@ -1,7 +1,7 @@
 // students
 
 import express from "express";
-import { getAllstudents, getstudentsById, deletestudentsById, addstudents, updatestudents } from "../helper/helperStudent";
+import { getAllStudents, getStudentsById, deleteStudentsById, addStudents, updateStudents } from "../helperStudent";
 const router = express.Router();
 
 
@@ -15,13 +15,20 @@ const router = express.Router();
 
 
         router.get('/', async(req, res)=> {  
-           const student = await  getAllstudents(req);
+          const { studentName } = req.query;
+          console.log(req.query,studentName);
+         
+               if (req.query.studentName){
+                  req.query.studentName = +req.query.studentName
+                  
+               } 
+           const student = await  getAllStudents(req);
             res.send(student)
         })
 
             router.get('/:id', async(req, res)=> {  
                 const { id } = req.params;
-                const student = await getstudentsById(id);
+                const student = await getStudentsById(id);
                student
                  ? res.send(student)
                  : res.status(404).send({ message: "No students Found" });
@@ -32,7 +39,7 @@ const router = express.Router();
                 const { id } = req.params;
                 console.log(req.params, "ID=", id);
                
-                const student = await deletestudentsById(id);
+                const student = await deleteStudentsById(id);
                   res.send(student)
                  
             }); 
@@ -41,7 +48,7 @@ const router = express.Router();
              router.post('/', async(req, res)=> {  
                 const newstudent = req.body;
                 console.log(newstudent)
-                const result = await addstudents(newstudent);
+                const result = await addStudents(newstudent);
                   res.send(result)
             }); 
 
@@ -50,7 +57,7 @@ const router = express.Router();
               const { id } = req.params;
                 const updatestudent = req.body;
                 console.log(updatestudent)
-                const result = await updatestudents(id,updatestudent);
+                const result = await updateStudents(id,updatestudent);
                   res.send(result)
                 });
 
