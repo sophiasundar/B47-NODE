@@ -29,7 +29,7 @@ export const client = await createConnection()
 app.use(express.json());
    
 app.get('/',(req, res)=> {  
-    res.send('welcome to assigning the students to the mentor 🧑‍🏫 🏫 🧑‍🎓')
+    res.send('Hello World hi👋🌏')
     })
 
     app.use("/products", productsRouter);

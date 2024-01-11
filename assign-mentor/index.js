@@ -21,7 +21,7 @@ export const client = await createConnection()
 app.use(express.json());
    
 app.get('/',(req, res)=> {  
-    res.send('Hello World hi👋🌏')
+    res.send('welcome to assigning the students to the mentor 🧑‍🏫 🏫 🧑‍🎓')
     })
 
 
