@@ -29,11 +29,13 @@ export const client = await createConnection()
 app.use(express.json());
    
 app.get('/',(req, res)=> {  
-    res.send('Hello World hi👋🌏')
+    res.send('welcome to assigning the students to the mentor 🧑‍🏫 🏫 🧑‍🎓')
     })
 
-app.use("/products", productsRouter);
-//   productsRouter is a name
+app.use("/students", studentsRouter);
+
+app.use("/teachers", teachersRouter);
+
 app.listen(PORT, ()=> 
 console.log("Server started on the PORT", PORT)
 )
