@@ -1,0 +1,33 @@
+[
+    {
+        "id": "1",
+        "studentName": "oliviya",
+        "batchNumber": "B48"
+    },
+    {
+        "id": "2",
+        "studentName": "zyn",
+        "batchNumber": "B47"
+    },
+    {
+        "id": "3",
+        "studentName": "indira",
+        "batchNumber": "B46"
+    },
+    {
+        "id": "4",
+        "studentName": "micheal",
+        "batchNumber": "B48"
+    },
+    {
+        "id": "5",
+        "studentName": "newton",
+        "batchNumber": "B47"
+    },
+    {
+        "id": "6",
+        "studentName": "ella",
+        "batchNumber": "B46"
+    }
+
+]

@@ -58,7 +58,8 @@ const router = express.Router();
                 //   .insertMany(newProduct)   new fuction
             }); 
 
-            // update products
+            // update products making the changes to the already 
+            // created data
             router.put('/:id', async(req, res)=> {
               const { id } = req.params;
                 const updateProduct = req.body;
