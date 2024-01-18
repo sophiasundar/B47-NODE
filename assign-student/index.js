@@ -2,6 +2,7 @@ import express from "express";
 import { MongoClient } from "mongodb";
 import * as dotenv from "dotenv";
 import { studentsRouter } from "./routes/routeStudents.js";
+import { mentorsRouter } from "./routes/routeMentors.js";
 
 const app = express();
 const PORT = 8000;
@@ -22,9 +23,11 @@ app.use(express.json());
 // REST API endpoints 
 
   app.get('/welcome',(req,res)=>{
-    res.send('welcome to assigning the students to the mentor webpage 🧑‍🏫 🏫 🧑‍🎓')
+    res.send('welcome to the mentor-students portal 🧑‍🏫 🏫 🧑‍🎓')
   })
   app.use("/students",studentsRouter);
+
+  app.use("/mentors",mentorsRouter);
 
   app.listen(PORT, ()=> 
 console.log("Server started on the PORT", PORT)
