@@ -6,9 +6,7 @@ import { mentorsRouter } from "./routes/routeMentors.js";
 
 
 const app = express();
-// const PORT = 8000;
-console.log(process.env);
-const PORT = process.env.PORT;
+const PORT = 8000;
 dotenv.config();
 
 // const MONGO_URL = "mongodb://0.0.0.0:27017";
