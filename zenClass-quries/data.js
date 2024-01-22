@@ -9,7 +9,7 @@
     
     //  USERS
 
-const users = [
+db.users.insertMany([
     {
         "userId": "1",
         "name": "indira",
@@ -34,11 +34,11 @@ const users = [
         "email": "mohamed@gmail.com",
         "mentorId": "4"
     }
-]
+])
 
     // codekata
 
-    const codekata = [
+    db.codekata.insertMany([
         {
             "userId": "1",
             "numberOfProblemsSolved": "100"
@@ -55,12 +55,12 @@ const users = [
             "userId": "4",
             "numberOfProblemsSolved": "121"
         }
-    ]  
+    ])
 
 
     // attendance
 
-    const attendance = [
+    db.attendance.insertMany([
         {
             "userId": "1",
             "topicId": "1",
@@ -81,11 +81,11 @@ const users = [
             "topicId": "4",
             "present": true
         }
-    ]
+    ])
     
         // topics
     
-        const topics = [
+        db.topics.insertMany([
             {
                 "topicId": "1",
                 "topic": "HTML",
@@ -106,11 +106,11 @@ const users = [
                 "topic": "ReactJS",
                 "topic_date": new Date("2020-10-23")
             }
-        ]
+        ])
 
         // tasks
 
-        const tasks = [
+        db.tasks.insertMany([
             {
                 "taskId": "1",
                 "task":"html",
@@ -143,62 +143,59 @@ const users = [
                 "lastDate": new Date("2020-10-17"),
                 "submitted": true
             }
-        ]
+        ])
 
         // company_drives
 
-        const company_drives = [
+        db.company_drives.insertMany([
             {
                 "userId": "1",
-                "name": "indira",
-                "email": "indira@gmail.com",
-                "mentorId": "1"
+                "driveDate": new Date("2020-10-18"),
+                "companyName": "Ratna Global Technologies"
             },
             {
                 "userId": "2",
-                "name": "micheal",
-                "email": "micheal@gmail.com",
-                "mentorId": "2"
+                "driveDate": new Date("2020-10-24"),
+                "companyName": "uExcelerate"
+               
             },
             {
                 "userId": "3",
-                "name": "rachel",
-                "email": "rachel@gmail.com",
-                "mentorId": "3"
+                "driveDate": new Date("2020-10-28"),
+                "companyName": "Spledflo"
             },
             {
                 "userId": "4",
-                "name": "mohamed",
-                "email": "mohamed@gmail.com",
-                "mentorId": "4"
+                "driveDate": new Date("2020-10-30"),
+                "companyName": "Buzzli"
             }
-        ]
+        ])
 
         // mentors
 
-        const mentors = [
+        db.mentors.insertMany([
             {
-                "userId": "1",
-                "name": "indira",
-                "email": "indira@gmail.com",
-                "mentorId": "1"
+                "mentorId": "1",
+                "mentorName": "sylvia",
+                "mentorEmail": "sylvia@gmail.com",
+                "menteeCount": 12,
             },
             {
-                "userId": "2",
-                "name": "micheal",
-                "email": "micheal@gmail.com",
-                "mentorId": "2"
+                "mentorId": "2",
+                "mentorName": "olivia",
+                "mentorEmail": "olivia@gmail.com",
+                "menteeCount": 20,
             },
             {
                 "userId": "3",
-                "name": "rachel",
-                "email": "rachel@gmail.com",
-                "mentorId": "3"
+                "name": "livia",
+                "email": "livia@gmail.com",
+                "mentorId": 25,
             },
             {
                 "userId": "4",
-                "name": "mohamed",
-                "email": "mohamed@gmail.com",
-                "mentorId": "4"
+                "name": "naevia",
+                "email": "naevia@gmail.com", 
+                "mentorId": 30,
             }
-        ]
+        ])
