@@ -36,7 +36,7 @@ router.delete('/:id', async(req, res)=> {
   }); 
 
 
-  // add mentor   for add mentors need to include the middleware called express.json()
+  // create mentor   for  create mentors need to include the middleware called express.json()
   router.post('/', async(req, res)=> {  
     const newMentor = req.body;
     console.log(newMentor)

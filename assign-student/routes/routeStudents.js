@@ -35,7 +35,7 @@
            
           }); 
 
-      // add students   for add students need to include the middleware called express.json()
+      // create students   for create students need to include the middleware called express.json()
         router.post('/', async(req, res)=> {  
         const newStudent = req.body;
         console.log(newStudent)
