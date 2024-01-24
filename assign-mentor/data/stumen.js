@@ -55,8 +55,24 @@ const mentor = [
         "id": 3,
         "mentorName": "lilly",
         "student_id": [3,6]
-    },
+    }
 ]
 
 
-
+const assigned = [
+    {
+        "id": 1,
+        "mentor_id": 1,
+        "student_id": [1,4]
+    },
+    {
+        "id": 2,
+        "mentor_id": 2,
+        "student_id": [2,5]
+    },
+    {
+        "id": 3,
+        "mentor_id": 3,
+        "student_id": [3,6]
+    }
+]

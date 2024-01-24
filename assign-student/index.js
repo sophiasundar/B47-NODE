@@ -3,7 +3,7 @@ import { MongoClient } from "mongodb";
 import * as dotenv from "dotenv";
 import { studentsRouter } from "./routes/routeStudents.js";
 import { mentorsRouter } from "./routes/routeMentors.js";
-
+import { stumenRouter } from "./routes/routeAssign.js";
 
 const app = express();
 const PORT = 8000;
@@ -35,7 +35,7 @@ app.use(express.json());
   app.use("/mentors",mentorsRouter);
     
   // assign students to the mentor collection
-  // app.use("/stumen",stumenRouter);
+  app.use("/stumen",stumenRouter);
 
   app.listen(PORT, ()=> 
 console.log("Server started on the PORT", PORT)
